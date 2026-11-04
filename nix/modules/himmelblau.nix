@@ -251,6 +251,13 @@ in
                 settings.mfa_poll_prompt = cfg.mfaSshWorkaroundFlag && service == "sshd";
                 settings.debug = cfg.debugFlag;
               };
+              password.himmelblau = {
+                order = super.password.unix.order - 10;
+                control = "sufficient";
+                modulePath = "${cfg.pamPackage.lib}/lib/libpam_himmelblau.so";
+                settings.ignore_unknown_user = true;
+                settings.debug = cfg.debugFlag;
+              };
               session.himmelblau = {
                 order = super.session.unix.order - 10;
                 control = "optional";
