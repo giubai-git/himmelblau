@@ -343,7 +343,7 @@ in
           Type = "notify";
           # SystemCallFilter = "@aio @basic-io @chown @file-system @io-event @network-io @sync";
           NoNewPrivileges = true;
-          PrivateTmp = true;
+          PrivateTmp = false;
           PrivateDevices = true;
           ProtectSystem = "strict";
           ProtectHostname = true;
