@@ -239,7 +239,7 @@ in
             {
               account.himmelblau = {
                 order = super.account.unix.order - 10;
-                control = "sufficient";
+                control = "[success=ok auth_err=die default=ignore]";
                 modulePath = "${cfg.pamPackage.lib}/lib/libpam_himmelblau.so";
                 settings.ignore_unknown_user = true;
                 settings.debug = cfg.debugFlag;
@@ -248,6 +248,8 @@ in
                 order = authUnixOrder - 10;
                 control = "sufficient";
                 modulePath = "${cfg.pamPackage.lib}/lib/libpam_himmelblau.so";
+                settings.ignore_unknown_user = true;
+                settings.set_authtok = true;
                 settings.mfa_poll_prompt = cfg.mfaSshWorkaroundFlag && service == "sshd";
                 settings.debug = cfg.debugFlag;
               };
@@ -256,6 +258,7 @@ in
                 control = "sufficient";
                 modulePath = "${cfg.pamPackage.lib}/lib/libpam_himmelblau.so";
                 settings.ignore_unknown_user = true;
+                settings.set_authtok = true;
                 settings.debug = cfg.debugFlag;
               };
               session.himmelblau = {
