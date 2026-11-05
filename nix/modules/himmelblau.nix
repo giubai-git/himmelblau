@@ -239,7 +239,7 @@ in
             {
               account.himmelblau = {
                 order = super.account.unix.order - 10;
-                control = "[success=ok auth_err=die default=ignore]";
+                control = "sufficient";
                 modulePath = "${cfg.pamPackage.lib}/lib/libpam_himmelblau.so";
                 settings.ignore_unknown_user = true;
                 settings.debug = cfg.debugFlag;
